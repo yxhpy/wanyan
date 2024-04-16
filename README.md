@@ -25,11 +25,15 @@ https://github.com/yxhpy/wanyan.git
 * spark 官方
 * maxai 浏览器token
 * claude 浏览器token
+![img.png](imgs/img.png)
 * geminiweb 浏览器token
+![img.png](imgs/img2.png)
 * geminillm 官方
 * kimi 浏览器token
+![img.png](imgs/img3.png)
 * bedrock 浏览器token
-
+![img.png](imgs/img5.png)
+![img_1.png](imgs/img_1.png)
 **开启您的星际探索**
 
 ```python
