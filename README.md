@@ -19,6 +19,17 @@ https://github.com/yxhpy/wanyan.git
 
 万言打破了 AI 星球之间的壁垒，建立起一个开放、共享的星际联邦。它将加速 AI 技术的星际传播，点燃创新的星火，引领人类迈向智能文明的新纪元。
 
+
+**支持清单**
+* zhipu 官方
+* spark 官方
+* maxai 浏览器token
+* claude 浏览器token
+* geminiweb 浏览器token
+* geminillm 官方
+* kimi 浏览器token
+* bedrock 浏览器token
+
 **开启您的星际探索**
 
 ```python
@@ -29,17 +40,18 @@ destination = "glm-4"
 
 # 发送星际通讯信号
 payload = {
-"model": destination,
-"messages": [
-{
-"role": "user",
-"content": "你好，来自地球的星际旅行者！"
-}
-]
+    "model": destination,
+    "messages": [
+        {
+            "role": "user",
+            "content": "你好，来自地球的星际旅行者！"
+        }
+    ]
 }
 
 # 启动星际传送门
-response = requests.request("POST", "http://127.0.0.1:5000/v1/chat/completions", json=payload, headers={"Authorization": "Bearer YOUR_API_KEY"})
+response = requests.request("POST", "http://127.0.0.1:5000/v1/chat/completions", json=payload,
+                            headers={"Authorization": "Bearer YOUR_API_KEY"})
 
 # 接收来自 AI 星球的回复
 print(response.text)
