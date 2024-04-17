@@ -6,7 +6,7 @@ import requests
 
 from utils.config import HOME_PATH
 
-session_path = os.path.join(HOME_PATH, "sessions", "sessions.json")
+session_path = os.path.join(HOME_PATH, "config", "sessions.json")
 if not os.path.exists(session_path):
     with open(session_path, 'w') as f:
         json.dump({}, f)
