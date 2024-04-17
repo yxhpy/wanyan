@@ -1,9 +1,9 @@
 import json
 import time
-import uuid
 
 from flask import Flask, request, jsonify, Response, stream_with_context
 
+from utils.config import set_token_config
 from core.modelfactory import process_messages
 
 app = Flask(__name__)
@@ -40,6 +40,13 @@ def chat():
 
     # 构造响应数据
     return Response(stream_with_context(generate()), content_type='text/event-stream')
+
+
+@app.route('/set_token_config', methods=['POST'])
+def set_config():
+    data = request.get_json()
+    set_token_config(data)
+    return "ok"
 
 
 if __name__ == '__main__':

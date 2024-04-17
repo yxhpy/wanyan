@@ -1,0 +1,64 @@
+[
+  {
+    "token": "sk-1",
+    "type": "zhipu",
+    "config": {
+      "api_key": ""
+    }
+  },
+  {
+    "token": "sk-2",
+    "type": "spark",
+    "config": {
+      "appid": "",
+      "api_secret": "",
+      "api_key": "",
+      "gpt_url": "",
+      "domain": ""
+    }
+  },
+  {
+    "token": "sk-3",
+    "type": "maxai",
+    "config": {
+      "api_key": ""
+    }
+  },
+  {
+    "token": "sk-4",
+    "type": "claude",
+    "config": {
+      "api_key": ""
+    }
+  },
+  {
+    "token": "sk-5",
+    "type": "geminiweb",
+    "config": {
+      "Secure_1PSID": "",
+      "Secure_1PSIDTS": ""
+    }
+  },
+  {
+    "token": "sk-6",
+    "type": "geminillm",
+    "config": {
+      "api_key": ""
+    }
+  },
+  {
+    "token": "sk-7",
+    "type": "kimi",
+    "config": {
+      "api_key": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTcyMTE0NjkwOCwiaWF0IjoxNzEzMzcwOTA4LCJqdGkiOiJjb2Z2ZTcxa3FxNHR0cmsycHJrMCIsInR5cCI6InJlZnJlc2giLCJzdWIiOiJjbzIwaWFlY3A3ZjlpaTJiYnRmZyIsInNwYWNlX2lkIjoiY28yMGlhZWNwN2Y5aWkyYmJ0ZjAiLCJhYnN0cmFjdF91c2VyX2lkIjoiY28yMGlhZWNwN2Y5aWkyYmJ0ZWcifQ.E3D6z-ooVC25-2smFtKxDGMGzi9AmvNUOKKiJX4Jnl9TahDI0V8hJUDQIyLMzbQKSK3lTHpzWVqr8oI7ZW0jCw"
+    }
+  },
+  {
+    "token": "sk-8",
+    "type": "bedrock",
+    "config": {
+      "token": "",
+      "csrf_token": ""
+    }
+  }
+]

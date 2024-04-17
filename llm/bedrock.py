@@ -6,7 +6,7 @@ from typing import Optional
 
 import requests
 
-from config.config import HOME_PATH
+from utils.config import HOME_PATH
 
 
 def run_js(js_code, creds, content):
