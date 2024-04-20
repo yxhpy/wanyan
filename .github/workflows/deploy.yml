@@ -29,6 +29,8 @@ jobs:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
+      - name: List files in the repository
+        run: ls -la
       - name: Copy Docker Compose file
         uses: appleboy/scp-action@master
         with:
