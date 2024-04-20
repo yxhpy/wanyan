@@ -26,7 +26,7 @@ jobs:
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ github.sha }}
   deploy_to_server:
-    needs: build_and_push
+    needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Copy Docker Compose file
