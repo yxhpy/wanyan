@@ -29,6 +29,8 @@ jobs:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
       - name: List files in the repository
         run: ls -la
       - name: Copy Docker Compose file
