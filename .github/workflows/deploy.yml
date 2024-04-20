@@ -25,7 +25,7 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ github.sha }}
-  deploy_to_server:
+  deploy-to-server:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
