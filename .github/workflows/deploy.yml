@@ -12,6 +12,15 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
+      - name: Calculate new version
+        id: version
+        run: |
+          git fetch --tags
+          LAST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          NEW_TAG="v$(echo $LAST_TAG | sed -e 's/v//' | awk -F'.' '{print $1"."$2"."$3+1}')"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+          echo ::set-output name=new_tag::$NEW_TAG
+
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -23,16 +32,20 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ github.sha }} .
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ github.sha }}
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }} .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }}
+
   deploy-to-server:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: List files in the repository
-        run: ls -la
+
+      - name: Update docker-compose.yml with new version # 更新 docker-compose.yml 中的版本
+        run: |
+          sed -i 's/${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:latest/${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }}/g' docker-compose.yml
+
       - name: Copy Docker Compose file
         uses: appleboy/scp-action@master
         with:
@@ -51,6 +64,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
             cd /srv/open-proxy-ai
             docker-compose pull
             docker-compose up -d

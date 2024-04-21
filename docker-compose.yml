@@ -1,8 +1,7 @@
 version: "3"
 services:
   flask_test:
-    image: yxhpy520/open-proxy-ai:de90c5cfe1d6c69d8a839993ef22b9131525693f
-    build: . # 一键构建镜像  =================  以上为构建命令，以下为运行命令
+    image: yxhpy520/open-proxy-ai:latest
     restart: always # 总是重启
     container_name: open-proxy-ai_v1.0 # 运行后的容器的名称
     ports:
