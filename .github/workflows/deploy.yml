@@ -39,7 +39,7 @@ jobs:
 
       - name: Update docker-compose.yml with new version # 更新 docker-compose.yml 中的版本
         run: |
-          sed -i 's/${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:latest/${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }}/g' docker-compose.yml
+          sed -i 's|${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:latest|${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }}|g' docker-compose.yml
 
       - name: Copy Docker Compose file
         uses: appleboy/scp-action@master
