@@ -30,13 +30,6 @@ jobs:
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }} .
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }}
 
-  deploy-to-server:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
-
       - name: Update docker-compose.yml with new version # 更新 docker-compose.yml 中的版本
         run: |
           sed -i 's|${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:latest|${{ secrets.DOCKER_HUB_USERNAME }}/open-proxy-ai:${{ steps.version.outputs.new_tag }}|g' docker-compose.yml
