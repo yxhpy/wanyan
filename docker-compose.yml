@@ -1,7 +1,7 @@
 version: "3"
 services:
   flask_test:
-    image: yxhpy520/open-proxy-ai:20240422075632
+    image: yxhpy520/open-proxy-ai:latest
     restart: always # 总是重启
     container_name: open-proxy-ai_v1.0 # 运行后的容器的名称
     ports:
