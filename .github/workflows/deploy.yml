@@ -54,5 +54,7 @@ jobs:
           script: |
             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
             cd /srv/open-proxy-ai
+            docker stop open-proxy-ai_v1.0
+            docker rm open-proxy-ai_v1.0
             docker-compose pull
             docker-compose up -d

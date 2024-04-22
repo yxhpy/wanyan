@@ -1,4 +1,5 @@
 import importlib
+import time
 from copy import deepcopy
 
 from utils.config import get_token_config
@@ -30,7 +31,14 @@ def process_messages(model, prompt, api_token):
     if api_key and isinstance(api_key, list):
         config_llm['api_key'] = api_key[idx % len(api_key)]
         print(config_llm)
-    return dynamic_import(conf['type'],
-                          **{"prompt": prompt,
-                             "model": model,
-                             **config_llm})
+    redo_times = 3
+    for i in range(redo_times):
+        try:
+            return dynamic_import(conf['type'],
+                                  **{"prompt": prompt,
+                                     "model": model,
+                                     **config_llm})
+        except Exception as e:
+            print(e)
+            pass
+            time.sleep(0.5)
