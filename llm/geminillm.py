@@ -15,7 +15,11 @@ def run(
         'temperature': temperature
     })
     res = ""
-    for i in response:
-        print(i.text, end="")
-        res += i.text
+    try:
+        for i in response:
+            print(i.text, end="")
+            res += i.text
+    except Exception as e:
+        print(e)
+        pass
     return res
